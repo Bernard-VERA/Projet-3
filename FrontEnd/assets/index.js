@@ -5,7 +5,6 @@ fetch("http://localhost:5678/api/works")
             return reponse.json();
         }
     })
-
     .then(function(donneesWorks){
         console.log(donneesWorks)
     })
