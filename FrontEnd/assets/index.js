@@ -1,6 +1,5 @@
 // Récupération des projets de l'architecte avec fetch
 const container = document.querySelector(".gallery");
-
 console.log(container);
 
 const getWorks = () => {
@@ -20,9 +19,9 @@ const getWorks = () => {
                 newImage.setAttribute('alt', work.title);
                 newFigure.appendChild(newImage);
                 let newFigcaption = document.createElement('figcaption');
-                newFigcaption.textContent = work.title;
+                newFigcaption.innerText = work.title;
                 newFigure.appendChild(newFigcaption);
-            document.querySelector("div.gallery").appendChild(newFigure);
+            document.querySelector(".gallery").appendChild(newFigure);
             });
         })
         .catch(function(error) {
@@ -32,49 +31,23 @@ const getWorks = () => {
 getWorks()
 
 
-const getCategories = () => {
+const getCategory = () => {
     fetch("http://localhost:5678/api/categories")
-        .then(function(response2) {
-            if(response2.ok) {
-            return response2.json();
+        .then(function(response) {
+            if(response.ok) {
+            return response.json();
             }
         })
-        .then(response => {
-            let categories = response
-         
+        .then(function(data) {
+            let categories = data;
             console.log(categories);
+            categories.forEach((category, index) => {
+                let newButton = document.createElement('button');
+                newButton.innerText = category.name;
+            document.querySelector(".category").appendChild(newButton);
+            })
         })
     }
-    getCategories()
+getCategory()
 
    
-/* 
-.then(function (data) {
-            for(project in data) {
-                container.innerHTML +=
-                `<figure>
-                    <img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-                    <figcaption>Abajour Tahina</figcaption>
-                </figure>`
-            
-        }})
- 
- function createGallery() {
-            const createfigure = document.createElement("figure");
-            const imageElement = document.createElement("img");
-            imageElement.src = project.imageUrl;
-            const altElement = document.createElement("alt");
-            altElement.innerText = project.title;
-            
-            const createFigcaption = document.createElement("figcaption");
-            createFigcaption.innerText = project.title;
-            }
-
-
-    
-            const gallery = document.querySelector(".gallery");
-gallery.appendChild(imageElement);
-sectionFiches.appendChild(nomElement);
-sectionFiches.appendChild(prixElement);
-sectionFiches.appendChild(categorieElement);
-*/
