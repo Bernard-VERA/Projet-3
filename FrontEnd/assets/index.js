@@ -5,17 +5,30 @@ console.log(container);
 
 const getWorks = () => {
     fetch("http://localhost:5678/api/works")
-        .then(function(response1) {
-            if(response1.ok) {
-            return response1.json();
+        .then(function(response) {
+            if(response.ok) {
+            return response.json();
          }
         })
-        .then(response => {
-            let project = response;
-            console.log(project);
+        .then(function(data) {
+            let works = data;
+            console.log(works);
+            works.forEach((work, index) => {
+                let newFigure = document.createElement('figure');
+            let newImage = document.createElement('img');
+                newImage.setAttribute('src', work.imageUrl);
+                newImage.setAttribute('alt', work.title);
+                newFigure.appendChild(newImage);
+                let newFigcaption = document.createElement('figcaption');
+                newFigcaption.textContent = work.title;
+                newFigure.appendChild(newFigcaption);
+            document.querySelector("div.gallery").appendChild(newFigure);
+            });
         })
-        }
-
+        .catch(function(error) {
+            console.log(error);
+        });
+    }
 getWorks()
 
 
