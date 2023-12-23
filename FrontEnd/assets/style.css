@@ -124,6 +124,28 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+.category {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 50px 0 50px 0;
+}
+.category button {
+	border: 1px solid #1D6154;
+	border-radius: 60px ;
+	font-family: 'Syne';
+	font-size: 16px;
+	font-weight: 700;
+	color: #1D6154;
+	background-color: white;
+	padding: 7px 15px 7px 15px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.category button:hover {
+	background-color: #1D6154;
+	color: white;
+}
 .gallery {
 	width: 100%;
 	display: grid;
@@ -131,7 +153,6 @@ li:hover {
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
-
 .gallery img {
 	width: 100%;
 
