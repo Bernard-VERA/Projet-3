@@ -71,4 +71,6 @@ const getCategory = () => {
     }
 getCategory()
 
+document.addEventListener('content', function() {})
+
    
