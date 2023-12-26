@@ -28,36 +28,54 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
+	max-width: 1440px;
 	margin:auto;
-	font-family: 'Work Sans' ;
+	font-family: 'Work Sans';
+	font-style: normal;
 	font-size: 14px;
+	background-color: rgb(255, 254, 249);
 }
+
 header {
+	max-width: 1140px;
 	display: flex;
+	height: 47px;
 	justify-content: space-between;
-	margin: 50px 0
+	align-items: center;
+	margin: auto;
+	margin-top: 50px;
 }
+
+main {
+	max-width: 1140px;
+	margin: auto;
+}
+
 section {
 	margin: 50px 0
 }
@@ -73,8 +91,11 @@ h1{
 
 h1 > span {
 	font-family: 'Work Sans';
-	font-size:10px;
-	letter-spacing: 0.1em;
+	font-size: 10px;
+	font-weight: 400 ;
+	letter-spacing: 0.05em;
+	padding-top: 6px;
+	color: #93532F;
 }
 
 h2{
@@ -83,53 +104,104 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+
+a {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
 nav ul {
 	display: flex;
+	height: 24px;
 	align-items: center;
 	list-style-type: none;
-
 }
+
 nav li {
+	display: flex;
+	align-items: center;
+	font-family: 'Work sans';
 	padding: 0 10px;
-	font-size: 1.2em;
+	margin-left: 20px;
+	font-size: 16px;
 }
 
-li:hover {
-	color: #B1663C;
+nav li:hover {
+	font-weight: 600;
 }
+
+nav ul img {
+	width: 22px;
+    height: 22px;
+    padding-left: 20px;
+	margin: 0;
+}
+
+nav li a {
+	color: #000000;
+	text-decoration: none;
+}
+
+nav li a:hover {
+	font-weight: 600;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
+	padding: 60px 95px ;
 }
+
 #introduction figure {
-	flex: 1
+	display: block;
 }
+
 #introduction img {
 	display: block;
 	margin: auto;
-	width: 80%;
+	width: 100%;
 }
 
 #introduction article {
-	flex: 1
+	display: flex;
+	flex-direction: column;
+	width: 100%;	
 }
+
 #introduction h2 {
 	margin-bottom: 1em;
+	padding-left: 80px;
 }
 
 #introduction p {
+	font-family: 'Work sans';
+	font-size: 14px;
+	font-weight: 400;
 	margin-bottom: 0.5em;
+	padding-left: 80px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
+
+#portfolio {
+	padding: 40px 95px 0px 95px;
+}
+
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
 .category {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	padding: 50px 0 50px 0;
+	padding: 25px 0 50px 0;
 }
+
 .category button {
 	border: 1px solid #1D6154;
 	border-radius: 60px ;
@@ -142,32 +214,52 @@ li:hover {
 	margin-left: 5px;
 	margin-right: 5px;
 }
+
 .category button:hover {
 	background-color: #1D6154;
 	color: white;
 }
+
 .gallery {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	grid-column-gap: 20px;
-	grid-row-gap: 20px;
+	grid-column-gap: 18px;
+	grid-row-gap: 15px;
 }
+
 .gallery img {
 	width: 100%;
+}
 
+.gallery figcaption {
+	font-family: 'Work sans';
+	font-size: 13px;
+	font-weight: 400;
+	padding-top: 5px;
 }
+
 #contact {
-	width: 50%;
-margin: auto;
+	width: 33%;
+	margin: auto;
 }
+
 #contact > * {
 	text-align: center;
-
 }
-#contact h2{
+
+#contact h2 {
+	margin-top: 30px;
 	margin-bottom: 20px;
 }
+
+#contact p {
+	font-family: 'Work sans';
+	font-size: 16px;
+	font-weight: 400;
+	color: #3D3D3D;
+}
+
 #contact form {
 	text-align: left;
 	margin-top:30px;
@@ -181,28 +273,39 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 #contact label {
 	margin: 2em 0 1em 0;
+	color: #3D3D3D;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
+#contact input[type="submit"]{
+	width: 180px;
+	height: 36px;
 	font-family: 'Syne';
+	font-size: 14px;
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
+	margin : 40px auto;
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
 }
 
+#contact input[type="submit"]:hover {
+	background-color: #0E2F28;
+    cursor: pointer;
+}
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	padding: 25px 100px 25px 0;
 }
 

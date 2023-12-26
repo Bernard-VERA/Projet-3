@@ -1,9 +1,9 @@
-document.addEventListener('content', function() {
+document.addEventListener('content', function(login) {
     document.getElementById('.formulaire').addEventListener('submit', function(event) {
         event.preventDefault();
         const user = {
-            email: document.querySelector('#email').value,
-            password: document.querySelector('#password').value,
+            email: document.getElementById('#email').value,
+            password: document.getElementById('#password').value,
         };
     
         fetch('http://localhost:5678/api/users/login', {
@@ -21,15 +21,23 @@ document.addEventListener('content', function() {
                     break;
                 case 200:
                     alert("Connected");
-                    break;
+                    return response.json();
             }
         
         })
         .then(function(data) {
             console.log(data);
+                if (response.status == 200) {
+                    document.location.href = "index.html";
+                }
+                else {
+                    document.location.href = "login.html";
+                }
+                 
         })
         .catch(function(error) {
             console.log(error)
         })
     })
+    login()
 })

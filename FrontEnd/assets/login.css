@@ -3,20 +3,28 @@
   }
 
   body {
-    max-width: 1140px;
+    max-width: 1440px;
     max-height: 1024px;
     margin: auto;
     font-family: 'Work Sans';
     font-style: normal;
     font-size: 14px;
+    background-color: rgb(255, 254, 249);
 }
 
 header {
+    max-width: 1140px;
 	display: flex;
-    height: 45px;
+    height: 47px;
 	justify-content: space-between;
     align-items: center;
-	margin: 50px 0;
+	margin: auto;
+    margin-top: 50px;
+}
+
+main {
+    max-width: 1140px;
+	margin: auto;
 }
 
 a {
@@ -34,50 +42,54 @@ h1{
 	font-size: 22px;
 	font-weight: 800;
 	color: #B1663C
-
 }
 
 h1 > span {
 	font-family: 'Work Sans';
-	font-size:10px;
-	letter-spacing: 0.1em;
+	font-size: 10px;
+    font-weight: 400;
+	letter-spacing: 0.05em;
+    padding-top: 6px;
+    color: #93532F;
 }
 
 h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154;
 }
 
 nav ul {
 	display: flex;
+    height: 24px;
 	align-items: center;
 	list-style-type: none;
 }
 
 nav li {
-    height: 22px;
-	padding: 0 10px;
+    display: flex;
+    align-items: center;
     font-family: 'Work sans';
+	padding: 0 10px;
+    margin-left: 20px;
 	font-size: 16px;
 }
 
-.nav-login {
-    font-weight: 600;
-}
-
 nav ul img {
+    margin: 0;
     width: 22px;
     height: 22px;
-    padding-left: 20px ;
+    padding-left: 20px;
 }
 
-li a {
-    color:#000000
+nav li a {
+    height: 22px;
+    color:#000000;
 }
-li a:hover {
-	color: #B1663C;
+
+nav li a:hover {
+	font-weight: 600;
 }
 
 .user-login-form {
@@ -112,7 +124,9 @@ li a:hover {
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-#submit {
+.user-login-form #submit {
+    width: 180px;
+    height: 36px;
     font-family: 'Syne';
     font-size: 14px;
     display: block;
@@ -131,21 +145,21 @@ li a:hover {
     padding-top: 25px;
 }
 
-.user-login-form button:hover {
+.user-login-form #submit:hover {
     background-color: #0E2F28;
-
+    cursor: pointer;
 }
 
 .login-footer nav ul {
     display: flex;
     justify-content: flex-end;
     height: 60px;
-    margin-top: 290px;
-    margin-right: 80px;
-    
+    margin-top: 265px;
+    padding: 25px 100px 25px 0;
 }
 
 .login-footer li a {
+    font-family: 'Work sans';
     font-size: 14px;
     font-weight: 300;
     color: #000000;
