@@ -1,14 +1,16 @@
-document.addEventListener('content', function(login) {
-    document.getElementById('.formulaire').addEventListener('submit', function(event) {
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('formulary').addEventListener('submit', function(event) {
         event.preventDefault();
+
         const user = {
-            email: document.getElementById('#email').value,
-            password: document.getElementById('#password').value,
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value,
         };
     
         fetch('http://localhost:5678/api/users/login', {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {'accept': 'application/json',
+                'Content-Type': 'application/json; charset=utf-8',},
             body: JSON.stringify(user)
         })  
         .then(function(response) {
@@ -23,21 +25,18 @@ document.addEventListener('content', function(login) {
                     alert("Connected");
                     return response.json();
             }
+            console.log(alert)
         
         })
         .then(function(data) {
             console.log(data);
-                if (response.status == 200) {
-                    document.location.href = "index.html";
-                }
-                else {
-                    document.location.href = "login.html";
-                }
+            localStorage.setItem('token', 'data.token');
+            localStorage.setItem('userId', 'data.userId');
+            window.location.href = '../index.html';
                  
         })
         .catch(function(error) {
-            console.log(error)
+            console.log(error);
         })
     })
-    login()
 })
