@@ -7,18 +7,20 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/eac0c08f49.js" crossorigin="anonymous"></script>
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	
 </head>	
 <body>
 <header>
 	<h1>Sophie Bluel <span>ARCHITECTE D'INT&Eacute;RIEUR</span></h1>
 	<nav>
 		<ul>
-			<li>projets</li>
-			<li>contact</li>
+			<li><a href="#portfolio">projets</a></li>
+			<li><a href="#contact">contact</a></li>
 			<li><a href="login.html">login</a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			<li><img src="./assets/icons/instagram.png" alt="Instagram" id="instag"></li>
 		</ul>
 	</nav>
 </header>
@@ -36,6 +38,9 @@
 	</section>
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
+		<div>
+			<a id="updateWorks" class="onlyAdminUpdateBtn" href="#editGallery"><i class="fa-solid fa-pen-to-square"></i>modifier</a>
+		</div>
 		<div class = category>
 			<!-- Insertion ici de la fonction getCategories, qui insère les categories-->
 		</div>
@@ -65,7 +70,20 @@
 		</ul>
 	</nav>
 </footer>
+<aside id="editGallery" class="modal" role="dialog" aria-labelledby="modalTitle">
+	<div class="modalWrapper">
+		<i class="fa-solid fa-xmark" id="close-modal"></i>
+		<h3 class="modalTitle">Galerie photo</h3>
+		<div class="modalGallery">
+			<div class="modal-content">
+				
+		</div>
+		</div>
+		<input type="submit" id="addPicture" value="Ajouter une photo">
+	</div>
+</aside>
 <script type="text/javascript" src="./assets/index.js"defer></script>
+<script src="./assets/modal.js"defer></script>
 
 </body>
 </html>

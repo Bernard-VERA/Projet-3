@@ -1,9 +1,6 @@
-// Ajout des projets dans la gallerie, avec Fetch
-const container = document.querySelector(".gallery");
-console.log(container);
+// Ajout des projets dans la gallerie de la Modale, avec Fetch.
 
-
-const getWorks = () =>{ 
+const getWorksInModal = () => { 
 
 fetch("http://localhost:5678/api/works") 
 .then(function(response) {
@@ -37,4 +34,33 @@ fetch("http://localhost:5678/api/works")
 	console.log(err);
 });
 }
-getWorks()
+getWorksInModal()
+
+
+// Création d'un bouton "modifier" dans index.html, pour lancer la modale
+
+let modal = document.querySelector(".modal")
+
+//Bouton pour afficher la modale
+//NE MARCHE PAS ????
+
+const openModal = function() {
+    const modal = document.querySelector(".modal");
+	modal.style.display = "flex";
+}
+let openModalBtn = document.querySelector("#updateWorks")
+openModalBtn = addEventListener("click",() => {
+	openModal();
+})
+
+
+//Bouton pour fermer la modale
+
+const closeModal = function() {
+	modal.style.display = "none"
+
+}
+let closeModalBtn = document.querySelector("#close-modal")
+closeModalBtn = addEventListener("click",() => {
+	closeModal();
+})

@@ -1,6 +1,4 @@
 // Récupération des projets de l'architecte avec fetch
-const container = document.querySelector(".gallery");
-console.log(container);
 
 let allWorks = [];
 const getWorks = () => {
@@ -71,6 +69,7 @@ const getCategory = () => {
     }
 getCategory()
 
-document.addEventListener('content', function() {})
+
+
 
    

@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     alert("Not authorized");
                     break;
                 case 200:
-                    alert("Connected");
                     return response.json();
             }
             console.log(alert)
@@ -30,9 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(function(data) {
             console.log(data);
-            localStorage.setItem('token', 'data.token');
-            localStorage.setItem('userId', 'data.userId');
-            window.location.href = '../index.html';
+            localStorage.getItem('token', 'data.token');
+            localStorage.getItem('userId', 'data.userId');
+            window.location.replace('index.html');
                  
         })
         .catch(function(error) {
