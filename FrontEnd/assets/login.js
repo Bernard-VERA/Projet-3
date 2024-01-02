@@ -25,13 +25,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     return response.json();
             }
             console.log(alert)
+            window.location.replace('login.html')
         
         })
         .then(function(data) {
-            console.log(data);
-            localStorage.getItem('token', 'data.token');
-            localStorage.getItem('userId', 'data.userId');
+            console.log(data.token);
+            console.log(data.token.length);
+            localStorage.setItem('token', 'data.token');
+            localStorage.setItem('userId', 'data.userId');
             window.location.replace('index.html');
+            const logIn = document.querySelector(".nav-login");
+            logIn.innerText = "logout";
+            logIn.addEventListener("click",() =>logOut());
                  
         })
         .catch(function(error) {
@@ -39,3 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     })
 })
+
+
+

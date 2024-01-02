@@ -48,7 +48,7 @@ const openModal = function() {
     const modal = document.querySelector(".modal");
 	modal.style.display = "flex";
 }
-let openModalBtn = document.querySelector("#updateWorks")
+let openModalBtn = document.querySelector(".btn-edit")
 openModalBtn = addEventListener("click",() => {
 	openModal();
 })

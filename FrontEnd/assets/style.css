@@ -198,7 +198,7 @@ nav li a:hover {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	padding: 25px 0 50px 0;
+	padding: 25px 0 0 0;
 }
 
 .category button {
@@ -225,6 +225,7 @@ nav li a:hover {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 18px;
 	grid-row-gap: 15px;
+	padding-top: 50px;
 }
 
 .gallery img {
@@ -355,9 +356,10 @@ footer nav ul {
 	display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-top: 10px;
+    padding-top: 50px;
     border-bottom: 1px solid #B3B3B3;
 }
+
 .modal-content {
     display: flex;
     flex-direction: row;
@@ -366,12 +368,12 @@ footer nav ul {
     padding-bottom: 40px;
    
 }
+
 .modal-content figure {
     margin: 0;
     display: flex;
     flex-direction: column;
 }
-
 
 .modalGallery img {
 	width: 76px;
@@ -397,3 +399,61 @@ footer nav ul {
 	text-align: center;
 	border-radius: 60px ;
 }
+
+.edit-banner {
+	position: fixed;
+	background-color: #000000;
+	width: 100%;
+	height: 60px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 25px;
+}
+
+.edit-banner div {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.edit-banner img {
+	height: 16px;
+	color: white;
+}
+
+.edit-banner p {
+	font-size: 16px;
+	font-weight: 400;
+	color:#FFFFFF;
+	font-family: 'Work Sans';
+}
+
+.onlyAdminUpdateBtn {
+	display: flex;
+	margin-left: 40%;
+}
+
+.btn-edit p {
+	font-size: 14px;
+	font-weight: 400;
+	color: #000000;
+	margin-bottom: 25px;
+	margin-left: 10px;
+}
+
+.btn-edit img {
+	height: 16px;
+	margin-bottom: 25px;
+	margin-left: 30px;
+	gap: 10px;
+}
+
+.btn-edit-picture {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 5px;
+	cursor: pointer;
+} 
