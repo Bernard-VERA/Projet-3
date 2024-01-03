@@ -33,10 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(data.token.length);
             localStorage.setItem('token', 'data.token');
             localStorage.setItem('userId', 'data.userId');
+            if(localStorage.getItem('token')!= null && localStorage.getItem('userId') != null) {
             window.location.replace('index.html');
-            const logIn = document.querySelector(".nav-login");
-            logIn.innerText = "logout";
-            logIn.addEventListener("click",() =>logOut());
+            switchToEditMode();
+            }
+            
                  
         })
         .catch(function(error) {
