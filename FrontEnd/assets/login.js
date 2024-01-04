@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(function(data) {
             console.log(data.token);
             console.log(data.token.length);
-            localStorage.setItem('token', 'data.token');
-            localStorage.setItem('userId', 'data.userId');
-            if(localStorage.getItem('token')!= null && localStorage.getItem('userId') != null) {
+            sessionStorage.setItem('token', 'data.token');
+            sessionStorage.setItem('userId', 'data.userId');
+            if(sessionStorage.getItem('token')!= null && sessionStorage.getItem('userId') != null) {
             window.location.replace('index.html');
             switchToEditMode();
             }

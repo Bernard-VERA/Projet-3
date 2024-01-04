@@ -73,7 +73,7 @@ const getCategory = () => {
     }
 getCategory()
 
-const logged = localStorage.getItem('data.token')
+const logged = sessionStorage.getItem('data.token')
 console.log(logged)
     
 
@@ -82,7 +82,7 @@ console.log(logged)
 // Passage en "mode édition"
 
 function switchToEditMode() {
-    if(localStorage.getItem('token')!= null && localStorage.getItem('userId') != null) {
+    if(sessionStorage.getItem('token')!= null && localStorage.getItem('userId')!= null) {
         // Bandeau noir "mode édition"
         const editBanner = document.createElement("div");
         editBanner.classList.add("edit-banner");
@@ -124,11 +124,11 @@ function switchToEditMode() {
         let filters = document.querySelector(".category")
         filters.style.display = "none";   
     }
-}
-switchToEditMode()
+}switchToEditMode()
 
 
 
+//Remplissage de la fenêtre modale
 // Ajout des projets dans la gallerie de la Modale, avec Fetch.
 
 const getWorksInModal = () => { 
@@ -180,9 +180,9 @@ const getWorksInModal = () => {
     
     let modal = document.querySelector(".modal")
     let modalWrapper = document.querySelector(".modalWrapper")
+
     //Récupération Bouton "class = btn-edit" pour afficher la modale
     //NE MARCHE PAS ????
-    
     function openModal() {
         modal.style.display = "flex";
     }
@@ -192,15 +192,25 @@ const getWorksInModal = () => {
     })
     
     
-    //Bouton pour fermer la modale
-    
-    const closeModal = function() {
-        modal.style.display = "none"
-    }
-    let closeModalBtn = document.querySelector("#close-modal")
-    closeModalBtn = addEventListener("click",() => {
-        closeModal();
-    })
-    
+   
+// Bouton "Ajouter une photo"  pour ouvrir la seconde modale
 
+document.getElementById("addPicture").addEventListener('click', function(event) {
+    event.preventDefault();
+    let modalWrapper = document.querySelector(".modal");
+    modalWrapper.style.display = "none";
+    let modalEdit = document.getElementById("#modal-edit");
+    modalEdit.style.display = "flex";
+})
+
+
+ //Bouton pour fermer la modale
+    
+ const closeModal = function() {
+    modal.style.display = "none"
+}
+let closeModalBtn = document.querySelector("#close-modal")
+closeModalBtn = addEventListener("click",() => {
+    closeModal();
+})
 

@@ -308,7 +308,7 @@ footer nav ul {
 	padding: 25px 100px 25px 0;
 }
 
-
+/* première modale*/
 .modal {
 	position: fixed;
     display: flex;
@@ -415,6 +415,16 @@ footer nav ul {
 	border-radius: 60px ;
 }
 
+/* Deuxième modale*/
+
+.modal-edit-work {
+	width: 630px;
+	height: 700px;
+	background-color: rgba(0, 0, 0, 0.3);
+	display: flex;
+}
+
+/* Mode édition*/
 .edit-banner {
 	position: fixed;
 	background-color: #000000;
