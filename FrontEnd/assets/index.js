@@ -1,4 +1,4 @@
-// Récupération des projets de l'architecte avec fetch
+// Récupération des projets de l'architecte avec fetch pour page d'accueil
 
 let allWorks = [];
 const getWorks = () => {
@@ -40,7 +40,7 @@ const showWorks = (id = null) => {
     });
 }
 
-// Création du bouton "Tous" dans les catégories
+// Création du bouton "Tous" dans les catégories de la page d'accueil
 
 let newButton = document.createElement('button');
     newButton.innerText = "Tous";
@@ -49,7 +49,7 @@ let newButton = document.createElement('button');
     showWorks()
     })
 
-// Affichage des catégories
+// Affichage des catégories dans la page d'accueil
 
 const getCategory = () => {
     fetch("http://localhost:5678/api/categories")
@@ -83,6 +83,7 @@ console.log(logged)
 
 function switchToEditMode() {
     if(sessionStorage.getItem('token')!= null && localStorage.getItem('userId')!= null) {
+        
         // Bandeau noir "mode édition"
         const editBanner = document.createElement("div");
         editBanner.classList.add("edit-banner");
@@ -115,21 +116,27 @@ function switchToEditMode() {
         pictureEditButton.insertAdjacentElement('afterbegin',pictureEditIcon);
         pictureEditButton.appendChild(pictureEditText);
 
-        // bouton logout à la place de login
+        // Afficher logout à la place de login dans le "mode édition"
         const logIn = document.querySelector(".nav-login");
         logIn.innerText = "logout";
         logIn.addEventListener("click",() =>logOut());
 
-        // Effacement des categories
+        // Effacement des categories dans le "mode édition"
         let filters = document.querySelector(".category")
-        filters.style.display = "none";   
+        filters.style.display = "none"; 
+
+        //ouvrir la première modale avec le bouton "modifier"
+        let openModalBtn = document.querySelector(".btn-edit")
+        openModalBtn.addEventListener("click",() => {
+            openModal()
+        })
     }
 }
 switchToEditMode()
 
 
 
-//Remplissage de la fenêtre modale
+//Remplissage de la première fenêtre modale
 // Ajout des projets dans la gallerie de la Modale, avec Fetch.
 
 const getWorksInModal = () => { 
@@ -159,7 +166,7 @@ const getWorksInModal = () => {
             newLabel.textContent = "Editer";
             newFigure.appendChild(newLabel);
 
-// insertion de l'icone corbeille
+// insertion de l'icone corbeille sur chaque image dans la modale
             let newIcon = document.createElement('i');
             newIcon.setAttribute('class',"fa-solid fa-trash-can");
             newIcon.classList.add("trashIcon");
@@ -182,36 +189,28 @@ const getWorksInModal = () => {
     let modal = document.querySelector(".modal")
     let modalWrapper = document.querySelector(".modalWrapper")
 
-    //Récupération de "modifier" "class = btn-edit" pour afficher la modale
-    //NE MARCHE PAS ????
+    // Fonction pour afficher la modale en cliquant sur "modifier"
     function openModal() {
-        modal.style.display = flex;
+        modal.style.display = "flex";
     }
-    let openModalBtn = document.querySelector(".btn-edit")
-    openModalBtn = addEventListener("click",() => {
-        openModal()
-    })
-    
-    
    
+    
 // Bouton "Ajouter une photo"  pour ouvrir la seconde modale
-// NE MARCHE PAS
 document.getElementById("addPicture").addEventListener('click', function(event) {
     event.preventDefault();
-    let modalWrapperBtn = document.querySelector(".modal");
+    let modalWrapperBtn = document.querySelector(".modalWrapper");
     modalWrapperBtn.style.display = "none";
     let modalEditBtn = document.getElementById("modal-edit");
     modalEditBtn.style.display = "flex";
 })
 
 
- //Bouton pour fermer la modale
-    
+ //Bouton x  pour fermer la première modale  
  const closeModal = function() {
     modal.style.display = "none"
 }
-let closeModalBtn = document.querySelector("close-modal")
-closeModalBtn = addEventListener("click",() => {
+let closeModalBtn = document.querySelector("#close-modal")
+closeModalBtn.addEventListener("click",() => {
     closeModal();
 })
 
