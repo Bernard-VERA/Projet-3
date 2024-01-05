@@ -419,9 +419,14 @@ footer nav ul {
 
 .modal-edit-work {
 	width: 630px;
-	height: 700px;
-	background-color: rgba(0, 0, 0, 0.3);
+	height: 670px;
+	background-color: #FFFFFF;
 	display: flex;
+	flex-direction: column;
+	align-items: center;
+    justify-content: center;
+	top: 10%;
+	
 }
 
 /* Mode édition*/

@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             console.log(alert)
             window.location.replace('login.html')
+            
         
         })
         .then(function(data) {

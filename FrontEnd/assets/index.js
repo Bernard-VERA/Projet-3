@@ -79,7 +79,7 @@ console.log(logged)
 
 
 
-// Passage en "mode édition"
+// création du "mode édition"
 
 function switchToEditMode() {
     if(sessionStorage.getItem('token')!= null && localStorage.getItem('userId')!= null) {
@@ -124,7 +124,8 @@ function switchToEditMode() {
         let filters = document.querySelector(".category")
         filters.style.display = "none";   
     }
-}switchToEditMode()
+}
+switchToEditMode()
 
 
 
@@ -181,10 +182,10 @@ const getWorksInModal = () => {
     let modal = document.querySelector(".modal")
     let modalWrapper = document.querySelector(".modalWrapper")
 
-    //Récupération Bouton "class = btn-edit" pour afficher la modale
+    //Récupération de "modifier" "class = btn-edit" pour afficher la modale
     //NE MARCHE PAS ????
     function openModal() {
-        modal.style.display = "flex";
+        modal.style.display = flex;
     }
     let openModalBtn = document.querySelector(".btn-edit")
     openModalBtn = addEventListener("click",() => {
@@ -194,13 +195,13 @@ const getWorksInModal = () => {
     
    
 // Bouton "Ajouter une photo"  pour ouvrir la seconde modale
-
+// NE MARCHE PAS
 document.getElementById("addPicture").addEventListener('click', function(event) {
     event.preventDefault();
-    let modalWrapper = document.querySelector(".modal");
-    modalWrapper.style.display = "none";
-    let modalEdit = document.getElementById("#modal-edit");
-    modalEdit.style.display = "flex";
+    let modalWrapperBtn = document.querySelector(".modal");
+    modalWrapperBtn.style.display = "none";
+    let modalEditBtn = document.getElementById("modal-edit");
+    modalEditBtn.style.display = "flex";
 })
 
 
@@ -209,7 +210,7 @@ document.getElementById("addPicture").addEventListener('click', function(event) 
  const closeModal = function() {
     modal.style.display = "none"
 }
-let closeModalBtn = document.querySelector("#close-modal")
+let closeModalBtn = document.querySelector("close-modal")
 closeModalBtn = addEventListener("click",() => {
     closeModal();
 })
