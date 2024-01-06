@@ -183,6 +183,7 @@ nav li a:hover {
 	padding-left: 80px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	color: #3D3D3D;
 }
 
 #portfolio {
@@ -308,6 +309,11 @@ footer nav ul {
 	padding: 25px 100px 25px 0;
 }
 
+footer nav li {
+	font-size: 14px;
+	color: #000000;
+}
+
 /* première modale*/
 .modal {
 	position: fixed;
@@ -329,7 +335,7 @@ footer nav ul {
 	align-items: center;
     justify-content: center;
     width: 630px;
-    height: 670px;
+    height: 688px;
 	border-radius: 10px;
 	background-color: #FFFFFF;
     position: absolute;
@@ -341,6 +347,7 @@ footer nav ul {
 	align-self: flex-end;
 	font-size: 1.5em;
 	padding-right: 30px;
+	padding-top: 20px;
 
 }
 
@@ -358,7 +365,6 @@ footer nav ul {
     flex-direction: row;
     flex-wrap: wrap;
     padding-top: 50px;
-	
     border-bottom: 1px solid #B3B3B3;
 }
 
@@ -367,14 +373,16 @@ footer nav ul {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding-bottom: 40px;
-   
+	
+    padding-bottom: 35px;
 }
 
 .modal-content figure {
     margin: 0;
     display: flex;
     flex-direction: column;
+	padding: 0px 6px 10px 6px;
+
 }
 
 .modal-content i {
@@ -386,7 +394,7 @@ footer nav ul {
 .trashIcon {
 	display: flex;
     position: relative;
-	top: -110px;	
+	top: -96px;	
 	left: -5px;
 	background-color: black;
 	border-radius: 3px;
@@ -411,8 +419,8 @@ footer nav ul {
 	color: white;
 	background-color: #1D6154;
 	border: 1px solid #1D6154;
-    margin-top: 40px;
-	margin-bottom: 30px;
+    margin-top: 38px;
+	margin-bottom: 45px;
 	text-align: center;
 	border-radius: 60px ;
 }
@@ -421,19 +429,17 @@ footer nav ul {
 
 #modal-edit {
 	top: 10%;
+	position: fixed;
 }
 .modal-edit-work {
+	
 	width: 630px;
-	height: 670px;
+	height: 688px;
 	border-radius: 10px;
 	background-color: #FFFFFF;
-	display: flex;
+	display: none;
 	flex-direction: column;
 	align-items: center;
-    justify-content: center;
-	
-	display: flex;
-	flex-direction: column;
 	justify-content: space-between;
 }
 
@@ -442,7 +448,7 @@ footer nav ul {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	padding-top: 25px;
+	padding-top: 5px;
 	font-size: 12px;
 }
 
@@ -458,12 +464,13 @@ footer nav ul {
 .modalEditTitle {
 	font-size: 26px;
     font-weight: 400;
-	margin-top: 0px;
-	margin-bottom: 10px;
+	margin-top: 10px;
+	
 }
 
 #modal-edit-work-form {
 	width: 420px;
+	padding-top: 25px;
 }
 
 #modal-edit-work-form .modal-content-new-photo {
@@ -471,7 +478,7 @@ footer nav ul {
 	flex-direction: column;
 	align-items: center;
 	width: 420px;
-	padding: 20px 0 20px 0;
+	padding: 25px 0 25px 0;
 	background-color: #E8F1F6;
 	margin: 0px 0px 30px 0px;
 	border-radius: 3px;
@@ -480,7 +487,8 @@ footer nav ul {
 .modal-content-new-photo i {
 	font-size: 59px;
 	color: #B9C5CC;
-	padding-bottom: 20px;
+	padding-bottom: 12px;
+	padding-top: 0px;
 	padding-right: 0px;
 	align-self: center;
 }
@@ -500,7 +508,7 @@ footer nav ul {
 
 .modal-content-new-photo #form-image {
 	width: 173px;
-	margin-top: -56px;
+	margin-top: -70px;
 	border-radius: 50px;
 	border: none;
 	cursor: pointer;
@@ -553,7 +561,7 @@ footer nav ul {
 }
 
 .modal-content-new-category-title input[type="submit"] {
-	margin: 25px auto 55px;
+	margin: 25px auto 45px;
 	border-radius: 60px;
 	background-color: #A7A7A7;
 	border: none;
@@ -567,8 +575,9 @@ footer nav ul {
 
 /* Mode édition*/
 .edit-banner {
-	position: fixed;
 	background-color: #000000;
+	max-width: 1440px;
+	margin: auto;
 	width: 100%;
 	height: 60px;
 	display: flex;
@@ -576,6 +585,7 @@ footer nav ul {
 	justify-content: center;
 	align-items: center;
 	gap: 25px;
+	margin-bottom: -70px;
 }
 
 .edit-banner div {

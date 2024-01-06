@@ -162,9 +162,7 @@ const getWorksInModal = () => {
             newImg.setAttribute('alt', work.title);
             newFigure.appendChild(newImg);
             
-            let newLabel = document.createElement('label');
-            newLabel.textContent = "Editer";
-            newFigure.appendChild(newLabel);
+            
 
 // insertion de l'icone corbeille sur chaque image dans la modale
             let newIcon = document.createElement('i');
