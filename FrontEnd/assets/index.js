@@ -132,14 +132,20 @@ function switchToEditMode() {
             openModal()
         })
 
-        //Cliquer sur "logout" pour se déconnecter
+
+
+
+
+
+
+
         
     }
 }
 switchToEditMode()
 
 //Cliquer sur "logout" pour se déconnecter
-document.querySelector('.nav-logout').addEventListener('click', function(event) {
+    document.querySelector('.nav-logout').addEventListener('click', function(event) {
     event.preventDefault();
     sessionStorage.removeItem('userId');
     sessionStorage.removeItem('token');
@@ -178,30 +184,33 @@ const getWorksInModal = () => {
             let newIcon = document.createElement('i');
             newIcon.setAttribute('class',"fa-solid fa-trash-can");
             newIcon.classList.add("trashIcon");
+            newIcon.setAttribute("id","trashIcon")
             newIcon.style = "color: #f1f2f3";
             newFigure.appendChild(newIcon);
+
             
+
             document.querySelector("div.modal-content").appendChild(newFigure);
         });
     })
     .catch(function(err) {
         console.log(err);
     });
-    }
-    getWorksInModal()
+  
+}
+getWorksInModal()
     
-    
-    
-   //Ouverture et fermeture de la modale
-    let modal = document.querySelector(".modal")
-    let modalWrapper = document.querySelector(".modalWrapper")
+     
+//Ouverture et fermeture de la modale
+let modal = document.querySelector(".modal")
+let modalWrapper = document.querySelector(".modalWrapper")
 
-    // Fonction pour afficher la modale en cliquant sur "modifier"
-    function openModal() {
-        modal.style.display = "flex";
-    }
-   
-    
+// Fonction pour afficher la modale en cliquant sur "modifier"
+function openModal() {
+    modal.style.display = "flex";
+}
+
+     
 // Bouton "Ajouter une photo"  pour ouvrir la seconde modale
 document.getElementById("addPicture").addEventListener('click', function(event) {
     event.preventDefault();
@@ -210,6 +219,7 @@ document.getElementById("addPicture").addEventListener('click', function(event) 
     let modalEditBtn = document.getElementById("modal-edit");
     modalEditBtn.style.display = "flex";
 })
+
  // Fonction pour fermer les modales en cliquant à l'extèrieur des modales
 window.onclick = function(event) {
     if (event.target == modal) {
@@ -218,17 +228,17 @@ window.onclick = function(event) {
 }
 
  //Bouton x  pour fermer la première modale  
- const closeModal = function() {
+    const closeModal = function() {
     modal.style.display = "none"
 }
 let closeModalBtn = document.querySelector("#close-modal")
-closeModalBtn.addEventListener("click",() => {
+    closeModalBtn.addEventListener("click",() => {
     closeModal();
 })
 
 // Bouton x pour fermer la deuxième modale
 let closeModalEditBtn = document.querySelector("#close-modalEdit")
-closeModalEditBtn.addEventListener("click",() => {
+    closeModalEditBtn.addEventListener("click",() => {
     closeModal();
 })
 
@@ -241,3 +251,37 @@ document.getElementById("returnArrow").addEventListener('click', function(event)
     modalWrapperBtn.style.display = "flex";
 })
  
+//Suppression d'une image avec l'icone "Corbeille" NE MARCHE PAS
+document.querySelector('#trashIcon').addEventListener('click', function(event) {
+    event.preventDefault();})
+
+
+
+
+if(confirm("Voulez-vous supprimer cet élément ?")) {
+fetch(`http://localhost:5678/api/works/${work.id}`,{
+    method: 'DELETE',
+    headers: {
+        'Content-Type': 'application/JSON',
+        'Authorization': 'Bearer' + sessionStorage.getItem('token')
+    }
+})
+.then(function(response) {
+    switch(response.status) {
+        case 404:
+        alert("Erreur dans l'identifiant ou le mot de passe");
+        break;
+    case 401:
+        alert("Suppression impossible");
+        break;
+    case 200:
+        console.log("Projet supprimé");
+        document.querySelector(`work-item-${work.id}`).remove();
+        break;
+    }
+}) 
+.catch(function(err) {
+    console.log(err)
+})
+}
+

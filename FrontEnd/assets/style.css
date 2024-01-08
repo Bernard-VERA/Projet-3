@@ -402,6 +402,7 @@ footer nav li {
 	left: -5px;
 	background-color: black;
 	border-radius: 3px;
+	cursor: pointer;
 }
 
 .modalGallery img {
@@ -427,6 +428,9 @@ footer nav li {
 	margin-bottom: 45px;
 	text-align: center;
 	border-radius: 60px ;
+}
+.modal #addPicture {
+	cursor: pointer;
 }
 
 /* Deuxième modale*/

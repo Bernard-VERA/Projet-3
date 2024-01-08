@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(function(response) {
             switch(response.status) {
                 case 404:
-                    alert("user not found");
+                    alert("Erreur dans l'identifiant ou le mot de passe");
                     break;
                 case 401:
-                    alert("Not authorized");
+                    alert("Non autorisé");
                     break;
                 case 200:
                     return response.json();
