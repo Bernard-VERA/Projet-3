@@ -119,7 +119,8 @@ function switchToEditMode() {
         // Afficher logout à la place de login dans le "mode édition"
         const logIn = document.querySelector(".nav-login");
         logIn.innerText = "logout";
-        logIn.addEventListener("click",() =>logOut());
+        logIn.classList.add("nav-logout");
+        logIn.addEventListener("click",() => logOut());
 
         // Effacement des categories dans le "mode édition"
         let filters = document.querySelector(".category")
@@ -130,11 +131,20 @@ function switchToEditMode() {
         openModalBtn.addEventListener("click",() => {
             openModal()
         })
+
+        //Cliquer sur "logout" pour se déconnecter
+        
     }
 }
 switchToEditMode()
 
-
+//Cliquer sur "logout" pour se déconnecter
+document.querySelector('.nav-logout').addEventListener('click', function(event) {
+    event.preventDefault();
+    sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('token');
+    window.location.replace('index.html');
+})
 
 //Remplissage de la première fenêtre modale
 // Ajout des projets dans la gallerie de la Modale, avec Fetch.
@@ -183,7 +193,6 @@ const getWorksInModal = () => {
     
     
    //Ouverture et fermeture de la modale
-    
     let modal = document.querySelector(".modal")
     let modalWrapper = document.querySelector(".modalWrapper")
 
@@ -201,7 +210,12 @@ document.getElementById("addPicture").addEventListener('click', function(event) 
     let modalEditBtn = document.getElementById("modal-edit");
     modalEditBtn.style.display = "flex";
 })
-
+ // Fonction pour fermer les modales en cliquant à l'extèrieur des modales
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none"
+    }
+}
 
  //Bouton x  pour fermer la première modale  
  const closeModal = function() {
@@ -212,3 +226,18 @@ closeModalBtn.addEventListener("click",() => {
     closeModal();
 })
 
+// Bouton x pour fermer la deuxième modale
+let closeModalEditBtn = document.querySelector("#close-modalEdit")
+closeModalEditBtn.addEventListener("click",() => {
+    closeModal();
+})
+
+// Bouton flèche gauche pour revenir à la première modale
+document.getElementById("returnArrow").addEventListener('click', function(event) {
+    event.preventDefault();
+    let modalEditReturnBtn = document.querySelector(".modal-edit-work");
+    modalEditReturnBtn.style.display = "none";
+    let modalWrapperBtn = document.querySelector(".modalWrapper");
+    modalWrapperBtn.style.display = "flex";
+})
+ 

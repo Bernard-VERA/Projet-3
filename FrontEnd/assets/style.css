@@ -148,6 +148,10 @@ nav li a:hover {
 	font-weight: 600;
 }
 
+.nav-logout {
+	cursor: pointer;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -457,8 +461,13 @@ footer nav li {
 	padding-left: 35px ;
 }
 
+#returnArrow {
+	cursor: pointer;
+}
+
 #close-modalEdit {
 	padding-right: 35px;
+	cursor: pointer;
 }
 
 .modalEditTitle {
@@ -508,7 +517,8 @@ footer nav li {
 
 .modal-content-new-photo #form-image {
 	width: 173px;
-	margin-top: -70px;
+	margin-top: -37px;
+	margin-bottom: 10px;
 	border-radius: 50px;
 	border: none;
 	cursor: pointer;
