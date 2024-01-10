@@ -140,7 +140,7 @@ switchToEditMode()
     document.querySelector('.nav-logout').addEventListener('click', function(event) {
     event.preventDefault();
     sessionStorage.removeItem('userId');
-    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('data.token');
     window.location.replace('index.html');
 })
 
@@ -236,7 +236,7 @@ document.getElementById("returnArrow").addEventListener('click', function(event)
     modalEditReturnBtn.style.display = "none";
     let modalWrapperBtn = document.querySelector(".modalWrapper");
     modalWrapperBtn.style.display = "flex";
-    // S'il y a une image dans "ajouter photo", la supprimer  
+    //si on a importé une image dans la deuxième modale, la supprimer
     if(document.getElementById('form-image-preview') != null) {
         document.getElementById('form-image-preview').remove()
         let iconNewPhoto = document.getElementById('photo-add-icon');
@@ -255,7 +255,7 @@ let modalGallery = document.querySelector('.modalGallery')
 modalGallery.addEventListener('click',function(event) {
     if(event.target.classList.contains('trashIcon')) {
         const figure = event.target.closest('figure');
-        let token = sessionStorage.getItem('data.token')
+        let token = sessionStorage.getItem('token')
         console.log(token)
         fetch(`http://localhost:5678/api/works/${work.id}`, {
             method: 'DELETE',
@@ -282,17 +282,19 @@ modalGallery.addEventListener('click',function(event) {
             console.log(err)
         })
     }
-})
+});
 
 
 
 
 // Importation d'une nouvelle image dans la deuxième modale
+
 document.getElementById('form-image').addEventListener('change', () => {
     let fileInput = document.getElementById('form-image');
     const maxFileSize = 4;
     const fileType = 'image/jpg, image/png';
-    if(fileInput.files[0].size < maxFileSize && fileInput.files[0].type == fileType) {
+    if(fileInput.files[0].size < maxFileSize && fileInput.files[0].type == fileType);
+        {
         let previewImage = document.createElement('img');
         previewImage.setAttribute('id', 'form-image-preview');
         previewImage.src = URL.createObjectURL(fileInput.files[0]);
@@ -307,10 +309,8 @@ document.getElementById('form-image').addEventListener('change', () => {
 		photoMaxSize.style.display= "none";
         let modalEditPhoto = document.getElementById('modal-edit-new-photo');
         modalEditPhoto.style.padding = "0";
-    }
-    else {
-        alert("Ce fichier n'est pas une image jpg/png, ou est trop volumineux.");
-    }     
+        }
+        
 });
 
 // ajout du choix des catégories avec fetch, dans l'input "categories" de la deuxième modale
@@ -333,10 +333,6 @@ fetch("http://localhost:5678/api/categories")
     .catch(function(error) {
         console.log(error);
     })
-
-
-
-
 
 //getWorksInModal transféré ici depuis la ligne 191 pour englober tout. Eventuellement à replacer à la ligne 191
 getWorksInModal()
