@@ -32,11 +32,16 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(function(data) {
             console.log(data.token);
             console.log(data.token.length);
-            sessionStorage.setItem('token', 'data.token');
-            sessionStorage.setItem('userId', 'data.userId');
-            if(sessionStorage.getItem('token')!= null && sessionStorage.getItem('userId') != null) {
+            const token = user
+            sessionStorage.setItem('token', JSON.stringify(token));
+            sessionStorage.setItem('data.token', JSON.stringify(data.token));
+            sessionStorage.setItem('userId', JSON.stringify(user));
+            sessionStorage.setItem('data.userId', JSON.stringify(data.userId))
+            if(sessionStorage.getItem('data.token')!= null && sessionStorage.getItem('userId') != null) {
             window.location.replace('index.html');
             switchToEditMode();
+            console.log(user)
+            console.log(token)
             }
             
                  

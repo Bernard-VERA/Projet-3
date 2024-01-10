@@ -82,7 +82,7 @@ console.log(logged)
 // création du "mode édition"
 
 function switchToEditMode() {
-    if(sessionStorage.getItem('token')!= null && localStorage.getItem('userId')!= null) {
+    if(sessionStorage.getItem('data.token')!= null && localStorage.getItem('userId')!= null) {
         
         // Bandeau noir "mode édition"
         const editBanner = document.createElement("div");
@@ -131,14 +131,6 @@ function switchToEditMode() {
         openModalBtn.addEventListener("click",() => {
             openModal()
         })
-
-
-
-
-
-
-
-
         
     }
 }
@@ -170,16 +162,16 @@ const getWorksInModal = () => {
         works.forEach((work, index) => {
             
             let newFigure = document.createElement('figure');
+
             newFigure.setAttribute('class', `work-item category-id-0 category-id-${work.categoryId}`);
             newFigure.setAttribute('id', `work-item-${work.id}`);
-            
+            let workId = `${work.id}`
+            console.log(workId)
             let newImg = document.createElement('img');
             newImg.setAttribute('src', work.imageUrl);
             newImg.setAttribute('alt', work.title);
             newFigure.appendChild(newImg);
             
-            
-
 // insertion de l'icone corbeille sur chaque image dans la modale
             let newIcon = document.createElement('i');
             newIcon.setAttribute('class',"fa-solid fa-trash-can");
@@ -187,20 +179,15 @@ const getWorksInModal = () => {
             newIcon.setAttribute("id","trashIcon")
             newIcon.style = "color: #f1f2f3";
             newFigure.appendChild(newIcon);
-
-            
-
             document.querySelector("div.modal-content").appendChild(newFigure);
         });
     })
     .catch(function(err) {
         console.log(err);
-    });
-  
+    });  
 }
-getWorksInModal()
+
     
-     
 //Ouverture et fermeture de la modale
 let modal = document.querySelector(".modal")
 let modalWrapper = document.querySelector(".modalWrapper")
@@ -249,39 +236,113 @@ document.getElementById("returnArrow").addEventListener('click', function(event)
     modalEditReturnBtn.style.display = "none";
     let modalWrapperBtn = document.querySelector(".modalWrapper");
     modalWrapperBtn.style.display = "flex";
+    // S'il y a une image dans "ajouter photo", la supprimer  
+    if(document.getElementById('form-image-preview') != null) {
+        document.getElementById('form-image-preview').remove()
+        let iconNewPhoto = document.getElementById('photo-add-icon');
+                iconNewPhoto.style.display = "flex";
+                let buttonNewPhoto = document.getElementById('new-image');
+				buttonNewPhoto.style.display= "flex";
+				let photoMaxSize = document.getElementById('photo-size');
+				photoMaxSize.style.display= "flex";
+    }
 })
  
+
 //Suppression d'une image avec l'icone "Corbeille" NE MARCHE PAS
-document.querySelector('#trashIcon').addEventListener('click', function(event) {
-    event.preventDefault();})
 
-
-
-
-if(confirm("Voulez-vous supprimer cet élément ?")) {
-fetch(`http://localhost:5678/api/works/${work.id}`,{
-    method: 'DELETE',
-    headers: {
-        'Content-Type': 'application/JSON',
-        'Authorization': 'Bearer' + sessionStorage.getItem('token')
+let modalGallery = document.querySelector('.modalGallery')
+modalGallery.addEventListener('click',function(event) {
+    if(event.target.classList.contains('trashIcon')) {
+        const figure = event.target.closest('figure');
+        let token = sessionStorage.getItem('data.token')
+        console.log(token)
+        fetch(`http://localhost:5678/api/works/${work.id}`, {
+            method: 'DELETE',
+            headers: {
+                accept: '*/*',
+                Authorization: 'Bearer ${token}',
+            }       
+        })
+        .then(function(response) {
+            switch(response.status) {
+                case 404:
+                alert("Erreur dans l'identifiant ou le mot de passe");
+                break;
+            case 401:
+                alert("Suppression impossible");
+                break;
+            case 200:
+                console.log("Projet supprimé");
+                document.getElementById(`work-item-${work.id}`).remove();
+                break;
+            }
+        })
+        .catch(function(err) {
+            console.log(err)
+        })
     }
 })
-.then(function(response) {
-    switch(response.status) {
-        case 404:
-        alert("Erreur dans l'identifiant ou le mot de passe");
-        break;
-    case 401:
-        alert("Suppression impossible");
-        break;
-    case 200:
-        console.log("Projet supprimé");
-        document.querySelector(`work-item-${work.id}`).remove();
-        break;
+
+
+
+
+// Importation d'une nouvelle image dans la deuxième modale
+document.getElementById('form-image').addEventListener('change', () => {
+    let fileInput = document.getElementById('form-image');
+    const maxFileSize = 4;
+    const fileType = 'image/jpg, image/png';
+    if(fileInput.files[0].size < maxFileSize && fileInput.files[0].type == fileType) {
+        let previewImage = document.createElement('img');
+        previewImage.setAttribute('id', 'form-image-preview');
+        previewImage.src = URL.createObjectURL(fileInput.files[0]);
+        document.querySelector('#modal-edit-new-photo').appendChild(previewImage);
+        previewImage.style.display = "block";
+        previewImage.style.height = "169px";
+        let iconNewPhoto = document.getElementById('photo-add-icon');
+        iconNewPhoto.style.display = "none";
+        let buttonNewPhoto = document.getElementById('new-image');
+		buttonNewPhoto.style.display= "none";
+		let photoMaxSize = document.getElementById('photo-size');
+		photoMaxSize.style.display= "none";
+        let modalEditPhoto = document.getElementById('modal-edit-new-photo');
+        modalEditPhoto.style.padding = "0";
     }
-}) 
-.catch(function(err) {
-    console.log(err)
-})
-}
+    else {
+        alert("Ce fichier n'est pas une image jpg/png, ou est trop volumineux.");
+    }     
+});
+
+// ajout du choix des catégories avec fetch, dans l'input "categories" de la deuxième modale
+fetch("http://localhost:5678/api/categories")
+        .then(function(response) {
+            if(response.ok) {
+            return response.json();
+            }
+        })
+        .then(function(data) {
+            let categories = data;
+                categories.forEach((category, index) => {
+            let option = document.createElement('option');
+                option.setAttribute('value', category.id);
+                option.textContent = category.name;
+                document.querySelector(".choice-category").appendChild(option);
+               
+            });
+        })
+    .catch(function(error) {
+        console.log(error);
+    })
+
+
+
+
+
+//getWorksInModal transféré ici depuis la ligne 191 pour englober tout. Eventuellement à replacer à la ligne 191
+getWorksInModal()
+
+
+ 
+
+
 
