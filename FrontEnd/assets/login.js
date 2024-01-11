@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(data.token.length);
             const token = user
             sessionStorage.setItem('token', JSON.stringify(token));
-            sessionStorage.setItem('data.token', JSON.stringify(data.token));
+            sessionStorage.setItem('data.token',data.token);
             sessionStorage.setItem('userId', JSON.stringify(user));
             sessionStorage.setItem('data.userId', JSON.stringify(data.userId))
             if(sessionStorage.getItem('data.token')!= null && sessionStorage.getItem('userId') != null) {

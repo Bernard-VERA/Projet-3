@@ -179,6 +179,9 @@ const getWorksInModal = () => {
             newIcon.setAttribute("id","trashIcon")
             newIcon.style = "color: #f1f2f3";
             newFigure.appendChild(newIcon);
+            newIcon.addEventListener('click', () => {
+                deleteWorkById(work.id)
+            })
             document.querySelector("div.modal-content").appendChild(newFigure);
         });
     })
@@ -249,40 +252,43 @@ document.getElementById("returnArrow").addEventListener('click', function(event)
 })
  
 
-//Suppression d'une image avec l'icone "Corbeille" NE MARCHE PAS
-
-let modalGallery = document.querySelector('.modalGallery')
+//Suppression d'une image avec l'icone "Corbeille"
+function deleteWorkById(id) {
+    console.log(id)
+    let token = sessionStorage.getItem('data.token')
+    console.log(token)
+    fetch(`http://localhost:5678/api/works/${id}`, {
+        method: 'DELETE',
+        headers: {
+            accept: '*/*',
+            Authorization: `Bearer ${token}`,
+        }       
+    })
+    .then(function(response) {
+        switch(response.status) {
+            case 404:
+            alert("Erreur dans l'identifiant ou le mot de passe");
+            break;
+        case 401:
+            alert("Suppression impossible");
+            break;
+        case 200:
+            alert("Projet supprimé");
+            document.getElementById(`work-item-${id}`).remove();
+            break;
+        }
+    })
+    .catch(function(err) {
+        console.log(err)
+    })
+}
+/* let modalGallery = document.querySelector('.modalGallery')
 modalGallery.addEventListener('click',function(event) {
     if(event.target.classList.contains('trashIcon')) {
         const figure = event.target.closest('figure');
-        let token = sessionStorage.getItem('token')
-        console.log(token)
-        fetch(`http://localhost:5678/api/works/${work.id}`, {
-            method: 'DELETE',
-            headers: {
-                accept: '*/*',
-                Authorization: 'Bearer ${token}',
-            }       
-        })
-        .then(function(response) {
-            switch(response.status) {
-                case 404:
-                alert("Erreur dans l'identifiant ou le mot de passe");
-                break;
-            case 401:
-                alert("Suppression impossible");
-                break;
-            case 200:
-                console.log("Projet supprimé");
-                document.getElementById(`work-item-${work.id}`).remove();
-                break;
-            }
-        })
-        .catch(function(err) {
-            console.log(err)
-        })
+       
     }
-});
+}); */
 
 
 
