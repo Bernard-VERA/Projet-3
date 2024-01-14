@@ -376,7 +376,7 @@ footer nav li {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+   
 	
     padding-bottom: 35px;
 }
@@ -584,6 +584,10 @@ footer nav li {
 	font-size: 14px;
 	font-weight: 700;
 	color: #FFFFFF;
+}
+
+#submit-new-work {
+	cursor: pointer;
 }
 
 
