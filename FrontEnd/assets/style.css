@@ -316,6 +316,7 @@ footer nav ul {
 footer nav li {
 	font-size: 14px;
 	color: #000000;
+	cursor: pointer;
 }
 
 /* première modale*/
