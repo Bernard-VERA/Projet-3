@@ -146,6 +146,7 @@ const getWorksInModal = () => {
     })
     .then(function(data) {
         let works = data;
+        document.querySelector("div.modal-content").innerHTML="";
         console.log(works);      
         works.forEach((work, index) => {
             let newFigure = document.createElement('figure');
@@ -164,16 +165,24 @@ const getWorksInModal = () => {
             newIcon.classList.add("trashIcon");
             newIcon.setAttribute("id","trashIcon")
             newIcon.style = "color: #f1f2f3";
+        
             newFigure.appendChild(newIcon);
             //Au clic sur une corbeille, supprimer l'image selectionnée
-            newIcon.addEventListener('click', (e) => {
-                deleteWorkById(work.id);
-                e.preventDefault();
-                closeModal();
-                getWorks();
-                openModal();
-  
+           
+            newIcon.addEventListener('click', (e) => {   
+                let confirmation = confirm('Voulez-vous supprimer ce projet ?')
+                if (confirmation == true) {
+                    deleteWorkById(work.id);
+
+                    e.preventDefault();
+                    closeModal();
+                    getWorks();
+                    openModal();
+                }
+                
+            
             })
+       
             document.querySelector("div.modal-content").appendChild(newFigure);
         });
     })
@@ -243,7 +252,10 @@ document.getElementById("returnArrow").addEventListener('click', function(event)
 })
  
 //Suppression d'une image avec l'icone "Corbeille"
+  
 function deleteWorkById(id) {
+   
+     
     console.log(id)
     let token = sessionStorage.getItem('data.token')
     console.log(token)
@@ -273,6 +285,8 @@ function deleteWorkById(id) {
     .catch(function(err) {
         console.log(err)
     })
+
+    
 }
 
 
@@ -368,6 +382,8 @@ fetch("http://localhost:5678/api/categories")
             body: formData     
         })
         .then(function(response) {
+            getWorksInModal();
+            getWorks();
             switch(response.status) {
                 case 500:
                 alert("Comportement inattendu");
@@ -386,39 +402,7 @@ fetch("http://localhost:5678/api/categories")
                 break
             }
         })
-        .then(function(json) {
-            
-            let newFigure = document.createElement('figure');
-                newFigure.setAttribute('class', `work-item category-id-0 category-id-${json.categoryId}`);
-                newFigure.setAttribute('id', `work-item-${json.id}`);
-            let newImage = document.createElement('img');
-                newImage.setAttribute('src', json.imageUrl);
-                newImage.setAttribute('alt', json.title);
-                newFigure.appendChild(newImage);
-            let newFigcaption = document.createElement('figcaption');
-                newFigcaption.innerText = json.title;
-                newFigure.appendChild(newFigcaption);
-            document.querySelector(".gallery").appendChild(newFigure);
-        // Retourner  à la première modale
-            let modalEditReturnBtn = document.querySelector(".modal-edit-work");
-            modalEditReturnBtn.style.display = "none";
-            let modalWrapperBtn = document.querySelector(".modalWrapper");
-            modalWrapperBtn.style.display = "flex";
-            //si on a importé une image dans la deuxième modale, la supprimer
-            if(document.getElementById('form-image-preview') != null) {
-                document.getElementById('form-image-preview').remove()
-                let iconNewPhoto = document.getElementById('photo-add-icon');
-                        iconNewPhoto.style.display = "flex";
-                        let buttonNewPhoto = document.getElementById('new-image');
-                        buttonNewPhoto.style.display= "flex";
-                        let photoMaxSize = document.getElementById('photo-size');
-                        photoMaxSize.style.display= "flex";
-                       
-            }
-           
-          
-    
-        })
+        
        
       
         .catch(function(err) {
