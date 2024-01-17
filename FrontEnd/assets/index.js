@@ -164,23 +164,18 @@ const getWorksInModal = () => {
             newIcon.setAttribute('class',"fa-solid fa-trash-can");
             newIcon.classList.add("trashIcon");
             newIcon.setAttribute("id","trashIcon")
-            newIcon.style = "color: #f1f2f3";
-        
+            newIcon.style = "color: #f1f2f3"; 
             newFigure.appendChild(newIcon);
-            //Au clic sur une corbeille, supprimer l'image selectionnée
-           
+            //Au clic sur une corbeille, supprimer l'image selectionnée       
             newIcon.addEventListener('click', (e) => {   
                 let confirmation = confirm('Voulez-vous supprimer ce projet ?')
                 if (confirmation == true) {
                     deleteWorkById(work.id);
-
                     e.preventDefault();
                     closeModal();
                     getWorks();
                     openModal();
-                }
-                
-            
+                }          
             })
        
             document.querySelector("div.modal-content").appendChild(newFigure);
@@ -233,8 +228,8 @@ let closeModalEditBtn = document.querySelector("#close-modalEdit")
 })
 
 // Bouton flèche gauche pour revenir à la première modale
-document.getElementById("returnArrow").addEventListener('click', function(event) {
-    event.preventDefault();
+document.getElementById("returnArrow").addEventListener('click', function(returnFirstModal) {
+    returnFirstModal.preventDefault();
     let modalEditReturnBtn = document.querySelector(".modal-edit-work");
     modalEditReturnBtn.style.display = "none";
     let modalWrapperBtn = document.querySelector(".modalWrapper");
@@ -242,20 +237,20 @@ document.getElementById("returnArrow").addEventListener('click', function(event)
     //si on a importé une image dans la deuxième modale, la supprimer
     if(document.getElementById('form-image-preview') != null) {
         document.getElementById('form-image-preview').remove()
-        let iconNewPhoto = document.getElementById('photo-add-icon');
-                iconNewPhoto.style.display = "flex";
-                let buttonNewPhoto = document.getElementById('new-image');
-				buttonNewPhoto.style.display= "flex";
-				let photoMaxSize = document.getElementById('photo-size');
-				photoMaxSize.style.display= "flex";
+            let iconNewPhoto = document.getElementById('photo-add-icon');
+            iconNewPhoto.style.display = "flex";
+            let buttonNewPhoto = document.getElementById('new-image');
+			buttonNewPhoto.style.display= "flex";
+			let photoMaxSize = document.getElementById('photo-size');
+			photoMaxSize.style.display= "flex";
+
+            document.getElementById('modal-edit-work-form').reset();
+            document.getElementById('submit-new-work').reset();
     }
 })
  
-//Suppression d'une image avec l'icone "Corbeille"
-  
+//Suppression d'une image avec l'icone "Corbeille" 
 function deleteWorkById(id) {
-   
-     
     console.log(id)
     let token = sessionStorage.getItem('data.token')
     console.log(token)
@@ -278,43 +273,55 @@ function deleteWorkById(id) {
         case 204:
             alert("Projet supprimé");
             document.getElementById(`work-item-${id}`).remove();
-           
             break;
         }
     })
     .catch(function(err) {
         console.log(err)
-    })
-
-    
+    })    
 }
+
+
+
 
 
 // Vérification des 3 champs du formulaire d'ajout de projet
 document.getElementById('form-title').addEventListener('input', verifyNewProject);
 document.getElementById('form-category').addEventListener('input', verifyNewProject);
-document.getElementById('form-image').addEventListener('input', verifyNewProject);
+
+//let validAddProject = function() {
+    
+//} 
+
 
 function verifyNewProject() {
     let title = document.getElementById('form-title');
     let category = document.getElementById('form-category');
-    let image = document.getElementById('form-image');
     let addProject = document.getElementById('submit-new-work')
-    addProject.addEventListener('click', () => {
-       closeModal();
-      
-    })
+    
 
-    let validAddProject = document.getElementById('submit-new-work');
-        if(title.value != "" && category.value != "" ) {
-            validAddProject.style.backgroundColor= "#1D6154";
-            return true;
-        } 
-        else {
-            return false;
-        }   
-        
-        
+    if(title.value != "" && category.value != "" ) {
+        alert("Cliquez sur valider pour ajouter ce nouveau projet ?")
+        addProject.style.backgroundColor= "#1D6154";
+        return true;
+    } 
+    else {
+        if (title == "") {
+        alert("Veuillez ajouter un titre valide.");
+        return false;    
+        }
+        if (category == "") {
+        alert("Veuillez choisir une catégorie valide.");
+        return false;
+        }
+    
+    }
+
+    addProject.addEventListener('click', () => {
+        addProject.style.backgroundColor= "#A7A7A7";
+      
+      
+    })   
 }
 
 
@@ -384,6 +391,7 @@ fetch("http://localhost:5678/api/categories")
         .then(function(response) {
             getWorksInModal();
             getWorks();
+            closeModal();
             switch(response.status) {
                 case 500:
                 alert("Comportement inattendu");
@@ -402,9 +410,24 @@ fetch("http://localhost:5678/api/categories")
                 break
             }
         })
-        
-       
-      
+        .then(function(e) {
+            let modalEditReturnBtn = document.querySelector(".modal-edit-work");
+            modalEditReturnBtn.style.display = "none";
+            let modalWrapperBtn = document.querySelector(".modalWrapper");
+            modalWrapperBtn.style.display = "flex";
+            if(document.getElementById('form-image-preview') != null) {
+                document.getElementById('form-image-preview').remove();
+                let iconNewPhoto = document.getElementById('photo-add-icon');
+                        iconNewPhoto.style.display = "flex";
+                        let buttonNewPhoto = document.getElementById('new-image');
+                        buttonNewPhoto.style.display= "flex";
+                        let photoMaxSize = document.getElementById('photo-size');
+                        photoMaxSize.style.display= "flex";
+                        document.getElementById('modal-edit-work-form').reset();
+                        document.getElementById('submit-new-work').reset();
+                        closeModal();    
+            }
+        }) 
         .catch(function(err) {
             console.log(err)
     })
