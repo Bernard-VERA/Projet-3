@@ -1,3 +1,4 @@
+
 // RECUPERATION DES PROJETS DANS L API POUR LA PAGE D'ACCUEIL
 //On crée une variable allworks et on définit ses propriétés
 //On crée la fonction getWorks
@@ -107,7 +108,7 @@ function switchToEditMode() {
         //CREATION DE LA BANNIERE NOIRE "MODE EDITION"
         //On crée "editBanner",une div avec la classe (.edit-banner)
         //On crée "editMode", une div
-        //On crée "editModeIcon", une image et on luiindique sa source (assets/etc...)
+        //On crée "editModeIcon", une image et on lui indique sa source (assets/etc...)
         //On crée un paragraphe (p) qui contient le innerText "Mode édition"
         //On crée la constante body. On  insère la bannière avant le body (before)
         //On crée "header" en selectionnant la classe (.header). On y ajoute du margin
@@ -311,17 +312,35 @@ let closeModalEditBtn = document.querySelector("#close-modalEdit")
     closeModal();
 })
 
+function showFirstModal() {
+    let modalEditReturnBtn = document.querySelector(".modal-edit-work");
+    modalEditReturnBtn.style.display = "none";
+    let modalWrapperBtn = document.querySelector(".modalWrapper");
+    modalWrapperBtn.style.display = "flex";
+}
+
+function resetForm() {
+    if(document.getElementById('form-image-preview') != null) {
+        document.getElementById('form-image-preview').remove()
+        let iconNewPhoto = document.getElementById('photo-add-icon');
+            iconNewPhoto.style.display = "flex";
+        let buttonNewPhoto = document.getElementById('new-image');
+            buttonNewPhoto.style.display= "flex";
+        let photoMaxSize = document.getElementById('photo-size');
+            photoMaxSize.style.display= "flex";
+        document.getElementById('modal-edit-work-form').reset();
+        document.getElementById('submit-new-work').reset();
+    }
+}
 //BOUTON "FLECHE GAUCHE" POUR REVENIR A LA PREMIERE MODALE
 //On sélectionne la "flèche gauche" avec son Id (return-arrow) et on l'écoute avec "addEventListener"
 //preventDefault pour éviter le rechargement de la page
 //On cache la deuxième modale (style.display = none) sélectionnée par sa classe (.modal-edit-work)
 //On fait apparaitre la première modale (style.display = flex) sélectionnée par sa classe (.modalWrapper)
+
 document.getElementById("returnArrow").addEventListener('click', function(returnFirstModal) {
     returnFirstModal.preventDefault();
-    let modalEditReturnBtn = document.querySelector(".modal-edit-work");
-    modalEditReturnBtn.style.display = "none";
-    let modalWrapperBtn = document.querySelector(".modalWrapper");
-    modalWrapperBtn.style.display = "flex";
+    showFirstModal();
     //On regarde s'il existe (!= null) une image dans (form-image-preview) de la deuxième modale
     //Si elle existe, on la supprime avec .remove
     //On fait re-apparaitre les 3 élements qui compososent la deuxième modale avec (style.display = flex)
@@ -330,17 +349,9 @@ document.getElementById("returnArrow").addEventListener('click', function(return
     //Le paragraphe "jpg, png, 4Mo max" sélectionné par son Id (#photo-size)
     //On sélectionne le formulaire de la deuxième modale (modal-edit-work-form) et on le réinitialise avec .reset
     //On sélectionne le bouton "valider" de la deuxième modale (submit-new-work) et on le réinitialise avec .reset
-    if(document.getElementById('form-image-preview') != null) {
-        document.getElementById('form-image-preview').remove()
-            let iconNewPhoto = document.getElementById('photo-add-icon');
-            iconNewPhoto.style.display = "flex";
-            let buttonNewPhoto = document.getElementById('new-image');
-			buttonNewPhoto.style.display= "flex";
-			let photoMaxSize = document.getElementById('photo-size');
-			photoMaxSize.style.display= "flex";
-            document.getElementById('modal-edit-work-form').reset();
-            document.getElementById('submit-new-work').reset();
-    }
+   
+        resetForm();
+    
 })
  
 //SUPPRESSION D'UNE IMAGE AVEC L'ICONE "CORBEILLE"
@@ -538,7 +549,7 @@ fetch("http://localhost:5678/api/categories")
         .then(function(response) {
             getWorksInModal();
             getWorks();
-            closeModal();
+            showFirstModal()
             switch(response.status) {
                 case 500:
                 alert("Comportement inattendu");
@@ -562,18 +573,7 @@ fetch("http://localhost:5678/api/categories")
             modalEditReturnBtn.style.display = "none";
             let modalWrapperBtn = document.querySelector(".modalWrapper");
             modalWrapperBtn.style.display = "flex";
-            if(document.getElementById('form-image-preview') != null) {
-                document.getElementById('form-image-preview').remove();
-                let iconNewPhoto = document.getElementById('photo-add-icon');
-                    iconNewPhoto.style.display = "flex";
-                let buttonNewPhoto = document.getElementById('new-image');
-                    buttonNewPhoto.style.display= "flex";
-                let photoMaxSize = document.getElementById('photo-size');
-                    photoMaxSize.style.display= "flex";
-                document.getElementById('modal-edit-work-form').reset();
-                document.getElementById('submit-new-work').reset();
-                closeModal();    
-            }
+            resetForm();
         })
         //Si une promesse du Fetch est rejetée, elle est attrapée par ".catch", qui retourne une erreur
         .catch(function(err) {
