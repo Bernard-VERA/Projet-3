@@ -59,7 +59,7 @@ h2{
 	font-size: 30px;
 	color: #1D6154;
 }
-
+/* Barre de navigation */
 nav ul {
 	display: flex;
     height: 24px;
@@ -91,7 +91,7 @@ nav li a {
 nav li a:hover {
 	font-weight: 600;
 }
-
+/* Formulaire de login */
 .user-login-form {
     width: 50%;
     margin: auto;
@@ -149,7 +149,7 @@ nav li a:hover {
     background-color: #0E2F28;
     cursor: pointer;
 }
-
+/* Footer */
 .login-footer nav ul {
     display: flex;
     justify-content: flex-end;

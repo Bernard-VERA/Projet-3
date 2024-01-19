@@ -51,7 +51,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-/** end reset css**/
+/** end reset css **/
 body {
 	max-width: 1440px;
 	margin:auto;
@@ -112,7 +112,7 @@ a {
 a:active {
     text-decoration: none;
 }
-
+/* Barre de navigation */
 nav ul {
 	display: flex;
 	height: 24px;
@@ -151,7 +151,7 @@ nav li a:hover {
 .nav-logout {
 	cursor: pointer;
 }
-
+/* Partie Introduction */
 #introduction {
 	display: flex;
 	align-items: center;
@@ -189,7 +189,7 @@ nav li a:hover {
 	padding-bottom: 5px;
 	color: #3D3D3D;
 }
-
+/* Partie Portfolio */
 #portfolio {
 	padding: 40px 95px 0px 95px;
 }
@@ -243,7 +243,7 @@ nav li a:hover {
 	font-weight: 400;
 	padding-top: 5px;
 }
-
+/* Partie Contact */
 #contact {
 	width: 33%;
 	margin: auto;
@@ -319,7 +319,7 @@ footer nav li {
 	cursor: pointer;
 }
 
-/* première modale*/
+/*Première modale*/
 .modal {
 	position: fixed;
     display: none;
@@ -433,7 +433,6 @@ footer nav li {
 }
 
 /* Deuxième modale*/
-
 #modal-edit {
 	top: 10%;
 	position: fixed;
@@ -589,12 +588,9 @@ footer nav li {
 	cursor: pointer;
 }
 
-
-
 /* Mode édition*/
 .edit-banner {
 	background-color: #000000;
-
 	margin: auto;
 	width: 100%;
 	height: 60px;

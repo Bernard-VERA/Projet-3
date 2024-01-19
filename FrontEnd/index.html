@@ -71,15 +71,18 @@
 </footer>
 <!--Création de la fenêtre modale-->
 <aside id="editGallery" class="modal" role="dialog" aria-labelledby="modalTitle">
+	<!--Première modale-->
 	<div class="modalWrapper" >
 		<i class="fa-solid fa-xmark" id="close-modal"></i>
 		<h3 class="modalTitle">Galerie photo</h3>
 		<div class="modalGallery">
-			<div class="modal-content">	
+			<div class="modal-content">
+				<!--Insertion ici de la galerie photo de la première modale-->
 			</div>
 		</div>
 		<input type="submit" id="addPicture" value="Ajouter une photo">
 	</div>
+	<!--Deuxième modale-->
 	<div id="modal-edit" class="modal-edit-work">
 		<div class="container-for-icon-in-second-window-of-modal">
 			<i class="fa-solid fa-arrow-left" id="returnArrow"></i>
@@ -87,6 +90,7 @@
 		</div>
 		<h3 class="modalEditTitle">Ajout photo</h3>
 		<form id="modal-edit-work-form" method="post" action="#">
+			<!--Insertion ici de l'image preview, à ajouter aux projets-->
 			<div id="modal-edit-new-photo" class="modal-content-new-photo">
 				<i id="photo-add-icon" class="fa-regular fa-image"></i>
 				<label id="new-image">+ Ajouter photo</label>
@@ -106,6 +110,7 @@
 		</form>
 	</div>
 </aside>
+<!--Déclaration du fichier index.js-->
 <script type="text/javascript" src="./assets/index.js"defer></script>
 </body>
 </html>
