@@ -421,13 +421,13 @@ fetch("http://localhost:5678/api/categories")
             showFirstModal()
             switch(response.status) {
                 case 500:
-                alert("Comportement inattendu");
+                alert("Comportement inattendu.");
                 break;
                 case 401:
-                alert("Non autorisé");
+                alert("Non autorisé.");
                 break;
                 case 400:
-                alert("Requète invalide");
+                alert("Requète invalide.");
                 break
                 case 201:
                 case 200:

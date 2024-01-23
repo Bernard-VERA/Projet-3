@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(function(response) {
             switch(response.status) {
                 case 404:
-                    alert("Erreur dans l'identifiant ou le mot de passe");
+                    alert("Erreur dans l'identifiant ou le mot de passe.");
                     break;
                 case 401:
-                    alert("Non autorisé");
+                    alert("Non autorisé. Mot de passe invalide.");
                     break;
                 case 200:
                     return response.json();
