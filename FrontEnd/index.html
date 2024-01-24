@@ -70,7 +70,7 @@
 	</nav>
 </footer>
 <!--Création de la fenêtre modale-->
-<div id="editGallery" class="modal" role="dialog" aria-labelledby="modalTitle">
+<div id="editGallery" class="modal" role="dialog">
 	<!--Première modale-->
 	<div class="modalWrapper" >
 		<i class="fa-solid fa-xmark" id="close-modal"></i>
@@ -89,7 +89,7 @@
 			<i class="fa-solid fa-xmark" id="close-modalEdit"></i>
 		</div>
 		<h3 class="modalEditTitle">Ajout photo</h3>
-		<form id="modal-edit-work-form" method="post" action="#">
+		<form id="modal-edit-work-form" method="post" autocomplete="off" action="#">
 			<!--Insertion ici de l'image preview, à ajouter aux projets-->
 			<div id="modal-edit-new-photo" class="modal-content-new-photo">
 				<i id="photo-add-icon" class="fa-regular fa-image"></i>
@@ -102,7 +102,7 @@
 				<input type="text" name="title" id="form-title" value="" required>
 				<label for="form-category">Catégorie</label>
 				<select class="choice-category" id="form-category" required>
-					<option value=""></option>
+					<option value="">&zwnj;</option>
 				</select>
 				<hr class="border-in-second-window-of-modal">
 				<input type="submit" id="submit-new-work" value="Valider">

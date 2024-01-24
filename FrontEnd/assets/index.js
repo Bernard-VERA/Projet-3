@@ -262,7 +262,7 @@ function resetForm() {
         let photoMaxSize = document.getElementById('photo-size');
             photoMaxSize.style.display= "flex";
         document.getElementById('modal-edit-work-form').reset();
-        document.getElementById('submit-new-work').reset();
+        document.getElementById('submit-new-work').style.backgroundColor= "#A7A7A7";
     }
 }
 //BOUTON "FLECHE GAUCHE" POUR REVENIR A LA PREMIERE MODALE
@@ -312,21 +312,27 @@ function deleteWorkById(id) {
 
 //VERIFICATION DES CHAMPS DU FORMULAIRE D'AJOUT DE PROJET                
 //Vérification de la validité du nom et de la catégorie
-document.getElementById('form-title').addEventListener('input', verifyNewProject);
+document.getElementById('form-title').addEventListener('change', verifyNewProject);
 document.getElementById('form-category').addEventListener('input', verifyNewProject);
+document.getElementById('form-image').addEventListener('input', verifyNewProject);
 function verifyNewProject() {
+    let photo = document.getElementById('form-image');
     let title = document.getElementById('form-title');
     let category = document.getElementById('form-category');
     let addProject = document.getElementById('submit-new-work')
 //Envoi de messages, si les inputs ne sont pas correctement remplis
 //Si tout est correct, le bouton "Valider" devient actif et change de couleur
-    if(title.value != "" && category.value != "" ) {
+    if(title.value != "" && category.value != "" && photo.value != "" ) {
         alert("Cliquez sur Valider pour ajouter ce nouveau projet ?")
         addProject.style.backgroundColor= "#1D6154";
         return true;
-    } 
+    }  
     else {
-        if (title == "") {
+        if (photo == "") {
+            alert("Veuillez ajouter une image.");
+            return false;
+        }
+        if (title <= 5) {
         alert("Veuillez ajouter un titre valide.");
         return false;    
         }
@@ -334,7 +340,6 @@ function verifyNewProject() {
         alert("Veuillez choisir une catégorie valide.");
         return false;
         }
-    
     }
 //Au clic sur le bouton "Valider" sa couleur redevient celle d'origine (Gris clair)
     addProject.addEventListener('click', () => {
