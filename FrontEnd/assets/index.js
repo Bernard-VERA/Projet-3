@@ -322,7 +322,7 @@ function verifyNewProject() {
     let addProject = document.getElementById('submit-new-work')
 //Envoi de messages, si les inputs ne sont pas correctement remplis
 //Si tout est correct, le bouton "Valider" devient actif et change de couleur
-    if(title.value != "" && category.value != "" && photo.value != "" ) {
+    if(photo.value != "" && title.value.trim() != "" && category.value != "") {
         alert("Cliquez sur Valider pour ajouter ce nouveau projet ?")
         addProject.style.backgroundColor= "#1D6154";
         return true;
@@ -332,7 +332,7 @@ function verifyNewProject() {
             alert("Veuillez ajouter une image.");
             return false;
         }
-        if (title <= 5) {
+        if (title.value.length >= 1 && (title.value.length < 2 || title.value.trim() == "")) {
         alert("Veuillez ajouter un titre valide.");
         return false;    
         }

@@ -354,7 +354,10 @@ footer nav li {
 	font-size: 1.5em;
 	padding-right: 30px;
 	padding-top: 20px;
+}
 
+#close-modal {
+	cursor: pointer;
 }
 
 .modalTitle {
@@ -382,6 +385,7 @@ footer nav li {
 }
 
 .modal-content figure {
+	position: relative;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -397,9 +401,9 @@ footer nav li {
 
 .trashIcon {
 	display: flex;
-    position: relative;
-	top: -96px;	
-	left: -5px;
+    position: absolute;
+	top: 7px;	
+	right: 10px;
 	background-color: black;
 	border-radius: 3px;
 	cursor: pointer;
@@ -432,6 +436,8 @@ footer nav li {
 .modal #addPicture {
 	cursor: pointer;
 }
+
+
 
 /* Deuxième modale*/
 #modal-edit {
