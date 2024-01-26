@@ -323,7 +323,7 @@ function verifyNewProject() {
 //Envoi de messages, si les inputs ne sont pas correctement remplis
 //Si tout est correct, le bouton "Valider" devient actif et change de couleur
     if(photo.value != "" && title.value.trim() != "" && category.value != "") {
-        alert("Cliquez sur Valider pour ajouter ce nouveau projet ?")
+        setTimeout(alert, 100, ("Cliquez sur Valider pour ajouter ce nouveau projet ?"))
         addProject.style.backgroundColor= "#1D6154";
         return true;
     }  

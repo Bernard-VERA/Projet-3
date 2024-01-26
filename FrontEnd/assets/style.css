@@ -402,7 +402,7 @@ footer nav li {
 .trashIcon {
 	display: flex;
     position: absolute;
-	top: 7px;	
+	top: 5px;	
 	right: 10px;
 	background-color: black;
 	border-radius: 3px;
