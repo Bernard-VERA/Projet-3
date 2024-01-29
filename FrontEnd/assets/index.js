@@ -161,7 +161,6 @@ const getWorksInModal = () => {
                 newFigure.setAttribute('class', `work-item category-id-0 category-id-${work.categoryId}`);
                 newFigure.setAttribute('id', `work-item-${work.id}`);
             let workId = `${work.id}`
-                console.log(workId)
             let newImg = document.createElement('img');
                 newImg.setAttribute('src', work.imageUrl);
                 newImg.setAttribute('alt', work.title);
