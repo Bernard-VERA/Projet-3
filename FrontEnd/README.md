@@ -20,14 +20,14 @@ Vous devez donc développer :
 ## Guide d'installation  
 1. Clonez le repo  
 2. Executez la commande `npm install` dans le dossier backend pour installer les dépendances du projet  
-3. Une fois les dépendances installées lancez le projet avec la commande `npm start` ou `node server`
+3. Une fois les dépendances installées lancez le projet avec la commande `npm start` et `node server` pour lancer le serveur.  
 4. Ouvrez une seconde fenêtre de votre éditeur de code, et dans le dossier Frontend, utilisez "Live Server" pour visualiser le projet.
    
 *Compte de login test pour Sophie Bluel :*  
 *email: sophie.bluel@test.tld*  
 *password: S0phie (Attention il s'agit d'un zéro et non de la lettre O)*
 
-Lien pour voir la [documentation Swagger](http://localhost:5678/api-docs/) 
+Lien pour voir la documentation Swagger (http://localhost:5678/api-docs/) 
 --
 ## Compétences  
 La capacité à créer des pages web dynamiques avec JavaScript est essentielle dans le développement web. 
