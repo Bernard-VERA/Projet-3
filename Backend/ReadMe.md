@@ -14,11 +14,11 @@ Ayant terminé votre dernier projet avec un peu d'avance, vous êtes envoyé en 
 Nous sommes lundi matin et c’est l’heure de votre premier brief d’équipe pour ce projet.
 -- 
 ## Mission  
-
-Après la réunion et le mail de Charlotte, vous listez vos 3 missions principales. Vous devez donc développer :
-➣ la page de présentation des travaux de l'architecte (à partir du HTML fourni)
-➣ la page de connexion de l'administrateur du site (le client) (code à créer de zéro)
-➣ la modale permettant d'uploader de nouveaux médias (code à créer from scratch).
+Après la réunion et le mail de la cheffe de projet, vous listez vos 3 missions principales.  
+Vous devez donc développer :  
+* La page de présentation des travaux de l'architecte, à partir du HTML fourni et de la maquette Figma.  
+* La page de connexion de l'administrateur du site (Code à créer de zéro)  
+* La modale double permettant d'uploader de nouveaux projets, et de supprimer les anciens (Code à créer de zéro)
   --
 ## Guide d'installation  
 1. Clonez le repo  
@@ -30,7 +30,7 @@ Après la réunion et le mail de Charlotte, vous listez vos 3 missions principal
 *email: sophie.bluel@test.tld*  
 *password: S0phie* (Attention : il s'agit d'un zéro et non de la lettre O)
 
-Lien pour voir la [documentation Swagger](http://localhost:5678/api-docs/) 
+Lien pour voir la documentation Swagger http://localhost:5678/api-docs/ 
 --
 ## Compétences  
 La capacité à créer des pages web dynamiques avec JavaScript est essentielle dans le développement web. 
