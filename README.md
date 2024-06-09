@@ -5,7 +5,8 @@
 ## Information pour le lancer le code
 
  - Lancer le backend depuis votre terminal en suivant les instruction du fichier ReadMe qui se trouve dans le répertoire backend.
- - Si vous désirez afficher le code du backend et du frontend, faites le dans 2 instances de VSCode différentes pour éviter tout problème.  
+ - Si vous désirez afficher le code du backend et du frontend, faites le dans 2 instances de VSCode différentes pour éviter tout problème. 
+ -- 
 
 ![image](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![image](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
