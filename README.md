@@ -40,3 +40,7 @@ Lien pour voir la documentation Swagger http://localhost:5678/api-docs/
 La capacité à créer des pages web dynamiques avec JavaScript est essentielle dans le développement web. 
 En apprenant à gérer les interactions utilisateurs et à communiquer avec des APIs, vous serez capable de créer des sites web interactifs et fonctionnels. 
 La gestion des événements utilisateurs et la manipulation des éléments du DOM avec JavaScript est primordiale dans le développement moderne.
+--
+<p align="center" width="100%">
+    <img width="90%" src="https://github.com/Bernard-VERA/Projet-3/blob/main/bluel.jpg"> 
+</p>
