@@ -35,5 +35,5 @@ En apprenant à gérer les interactions utilisateurs et à communiquer avec des 
 La gestion des événements utilisateurs et la manipulation des éléments du DOM avec JavaScript est primordiale dans le développement moderne.
 --
 <p align="center" width="100%">
-    <img width="90%" src="https://github.com/Bernard-VERA/Projet-2/blob/main/FrontEnd/bluel.jpg"> 
+    <img width="90%" src="https://github.com/Bernard-VERA/Projet-3/blob/main/FrontEnd/bluel.jpg"> 
 </p>
