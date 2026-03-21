@@ -24,7 +24,8 @@ Vous devez donc développer :
 * La page de connexion de l'administrateur du site (Code à créer de zéro).  
 * La modale double permettant d'uploader de nouveaux projets, et de supprimer les anciens (Code à créer de zéro).  
 
-## Guide d'installation  
+## Guide d'installation
+La version de Node.js utilisée est la 20.11.1
 1. Clonez le repo  
 2. Executez la commande `npm install` dans le dossier backend pour installer les dépendances du projet  
 3. Une fois les dépendances installées lancez le projet avec la commande `npm start` et `node server` pour lancer le serveur.  
