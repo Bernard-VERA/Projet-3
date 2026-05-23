@@ -35,7 +35,6 @@ La version de Node.js utilisée est la 20.11.1
 *email: sophie.bluel@test.tld*  
 *password: S0phie* (Attention : il s'agit d'un zéro et non de la lettre O)
 
-Lien pour voir la documentation Swagger http://localhost:5678/api-docs/ 
 --
 ## Compétences 
  
